@@ -1,18 +1,50 @@
 <template>
   <li>
-    <h2>{{ friend.name }}</h2>
+    <h2>{{ name }} {{ isFavourite ? "(Favourite)" : "" }}</h2>
+    <button @click="toggleIsFriendFavourite">Toggle Favourite</button>
     <button @click="toggleDetailsVisible">
       {{ toggleDetailsVisible ? "Show" : "Hide" }} Details
     </button>
     <ul v-if="isDetailsVisible">
-      <li><strong>Phone: </strong>{{ friend.number }}</li>
-      <li><strong>Email: </strong>{{ friend.email }}</li>
+      <li><strong>Phone: </strong>{{ number }}</li>
+      <li><strong>Email: </strong>{{ eMail }}</li>
     </ul>
+    <div>
+      <button @click="onClickDelete">Delete</button>
+    </div>
   </li>
 </template>
 
 <script>
 export default {
+  //   props: ["name", "number", "eMail", "isFavourite"],
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    number: {
+      type: String,
+      required: true,
+    },
+    eMail: {
+      type: String,
+      required: true,
+    },
+    isFavourite: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
+  emits: ["toggle-favourite", "delete-contact"],
+  // emits: {
+  //   "toggle-favourite": function (id) {},
+  // },
   data() {
     return {
       isDetailsVisible: false,
@@ -27,6 +59,12 @@ export default {
   methods: {
     toggleDetailsVisible() {
       this.isDetailsVisible = !this.isDetailsVisible;
+    },
+    toggleIsFriendFavourite() {
+      this.$emit("toggle-favourite", this.id);
+    },
+    onClickDelete() {
+      this.$emit("delete-contact", this.id);
     },
   },
 };
@@ -88,6 +126,7 @@ header {
   color: white;
   padding: 0.05rem 1rem;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
+  margin: 0px 5px;
 }
 
 #app button:hover,
