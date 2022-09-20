@@ -4,11 +4,13 @@
     <label for="goal">Goal</label>
     <input type="text" ref="goal" />
     <button @click="setGoals">Set Goal</button>
-    <ErrorDialog v-if="isInputInvalid">
-      <h2>Input is Invalid</h2>
-      <p>Kindly enter a few charecters</p>
-      <button @click="updateErrorStatus">Okay</button>
-    </ErrorDialog>
+    <teleport to="body">
+      <ErrorDialog v-if="isInputInvalid">
+        <h2>Input is Invalid</h2>
+        <p>Kindly enter a few charecters</p>
+        <button @click="updateErrorStatus">Okay</button>
+      </ErrorDialog>
+    </teleport>
   </div>
 </template>
 

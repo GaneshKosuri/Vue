@@ -1,6 +1,6 @@
 # Section 9: Diving Deeper into components
 
-#### Things I have learned in this chapter
+#### Things that I have learned in this chapter
 
 - **Global vs Local components**
 - **Scoped Styles**
@@ -11,3 +11,7 @@
 - **Scoped Slots**
 - **Dynamic Components**
 - **Keeping Dynamic Components Alive --> keep-alive**
+- **Teleporting Elements**
+- **Fragments**
+- **Vue Style Guide**
+  - check [here](https://v2.vuejs.org/v2/style-guide/?redirect=true)
