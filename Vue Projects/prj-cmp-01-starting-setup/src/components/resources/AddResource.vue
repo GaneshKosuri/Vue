@@ -22,15 +22,23 @@
         <base-button type="submit">Add Resource</base-button>
       </div>
     </form>
-    <base-dialog v-if="shouldShowErrorDialog" title="Invalid Input">
-      <template #default>
-        <p>Input Values are Invalid</p>
-        <p>Kindly enter all the input fields with at least few charecters</p>
-      </template>
-      <template #actions>
-        <base-button @click="setShouldShowErrorDialog(false)">Okay</base-button>
-      </template>
-    </base-dialog>
+    <teleport to="#app">
+      <base-dialog
+        v-if="shouldShowErrorDialog"
+        title="Invalid Input"
+        @close="setShouldShowErrorDialog(false)"
+      >
+        <template #default>
+          <p>Input Values are Invalid</p>
+          <p>Kindly enter all the input fields with at least few charecters</p>
+        </template>
+        <template #actions>
+          <base-button @click="setShouldShowErrorDialog(false)"
+            >Okay</base-button
+          >
+        </template>
+      </base-dialog>
+    </teleport>
   </base-card>
 </template>
 

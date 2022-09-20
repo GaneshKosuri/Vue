@@ -9,13 +9,16 @@
       <slot></slot>
     </section>
     <menu>
-      <slot name="actions"></slot>
+      <slot name="actions">
+        <base-button @click="$emit('close')">Close</base-button>
+      </slot>
     </menu>
   </dialog>
 </template>
 
 <script>
 export default {
+  emits: ['close'],
   props: {
     title: {
       type: String,

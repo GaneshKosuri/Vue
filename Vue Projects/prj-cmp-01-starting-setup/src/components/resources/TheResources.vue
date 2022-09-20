@@ -77,11 +77,12 @@ export default {
       this.selectedTab = 'stored-resources';
     },
     deleteResource(resourceId) {
-      console.log('delete res id', resourceId);
-      this.storedResources = this.storedResources.filter(
-        (resource) => resource.id !== resourceId
+      const resourceIndex = this.storedResources.findIndex(
+        (resource) => resource.id === resourceId
       );
-      console.log(this.storedResources);
+      if (resourceIndex === -1) return;
+
+      this.storedResources.splice(resourceIndex, 1);
     },
   },
 };
