@@ -18,7 +18,9 @@
     <ManageGoals v-if="activeComponent === 'manage-goals'" /> -->
 
     <!-- Dynamic components goes from here  -->
-    <component :is="activeComponent"> </component>
+    <keep-alive>
+      <component :is="activeComponent"> </component>
+    </keep-alive>
   </div>
 </template>
 

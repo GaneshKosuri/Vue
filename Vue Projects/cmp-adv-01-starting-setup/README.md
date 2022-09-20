@@ -10,3 +10,4 @@
 - **v-slot Shot hand syntax**
 - **Scoped Slots**
 - **Dynamic Components**
+- **Keeping Dynamic Components Alive --> keep-alive**
