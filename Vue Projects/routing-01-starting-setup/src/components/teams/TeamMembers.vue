@@ -1,4 +1,5 @@
 <template>
+  <button @click="goBack">Go Back</button>
   <section>
     <h2>{{ teamName }}</h2>
     <ul>
@@ -9,6 +10,7 @@
         :role="member.role"
       ></user-item>
     </ul>
+    <router-link to="/teams/t2">Go To team 2</router-link>
   </section>
 </template>
 
@@ -16,17 +18,42 @@
 import UserItem from '../users/UserItem.vue';
 
 export default {
+  inject: ['users', 'teams'],
   components: {
-    UserItem
+    UserItem,
   },
+
   data() {
     return {
-      teamName: 'Test',
-      members: [
-        { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
-        { id: 'u2', fullName: 'Max Schwarz', role: 'Engineer' },
-      ],
+      teamName: '',
+      members: [],
     };
+  },
+  methods: {
+    loadTeamMembers(route) {
+      const teamId = route.params.teamId;
+      const selectedTeam = this.teams.find((team) => team.id === teamId);
+      const members = selectedTeam.members;
+      const selectedMembers = [];
+      members.forEach((member) => {
+        const selectedMember = this.users.find((user) => user.id === member);
+        selectedMembers.push(selectedMember);
+      });
+
+      this.teamName = selectedTeam.name;
+      this.members = selectedMembers;
+    },
+    goBack() {
+      this.$router.back();
+    },
+  },
+  created() {
+    this.loadTeamMembers(this.$route);
+  },
+  watch: {
+    $route(newRoute) {
+      this.loadTeamMembers(newRoute);
+    },
   },
 };
 </script>
