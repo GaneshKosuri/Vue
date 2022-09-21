@@ -6,6 +6,9 @@ import TeamsList from "./components/teams/TeamsList.vue"
 import TeamMembers from "./components/teams/TeamMembers.vue"
 import UsersList from "./components/users/UsersList.vue"
 import NotFound from "./components/nav/NotFound.vue"
+import TeamsFooter from "./components/teams/TeamsFooter.vue"
+import UsersFooter from "./components/users/UsersFooter.vue"
+
 
 
 const router = createRouter({
@@ -15,14 +18,14 @@ const router = createRouter({
         // { path: '/teams', component: TeamsList, alias: "/" },
         // { path: "/teams/:teamId", component: TeamMembers, props: true },
         {
-            name: 'teams', path: '/teams', component: TeamsList, alias: "/",
+            name: 'teams', path: '/teams', components: { default: TeamsList, footer: TeamsFooter }, alias: "/",
             children: [
                 {
-                    name: 'team-members', path: ":teamId", component: TeamMembers, props: true
+                    name: 'team-members', path: ":teamId", components: TeamMembers, props: true
                 }
             ]
         },
-        { path: '/users', component: UsersList },
+        { path: '/users', components: { default: UsersList, footer: UsersFooter } },
         { path: "/:notFOund(.*)", component: NotFound }
     ],
     linkActiveClass: 'vue-route-active'
