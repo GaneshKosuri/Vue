@@ -18,3 +18,12 @@
 - Query Params
 - Named Router Views
 - Controlling Scrolling behaviour
+- Navigation Guards
+  - router.beforeEach
+  - beforeEnter --> route
+  - beforeRouteUpdate, beforeRouteEnter --> route cmp
+  - afterEach
+  - beforeRouteLeave
+- Route Meta Data
+
+- Organised Route structure

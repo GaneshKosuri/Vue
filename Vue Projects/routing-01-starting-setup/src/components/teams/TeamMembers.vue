@@ -56,6 +56,11 @@ export default {
       this.loadTeamMembers(teamId);
     },
   },
+  beforeRouteUpdate(to, from, next) {
+    console.log('before route update in team members list');
+    console.log(to, from);
+    console.log(next());
+  },
 };
 </script>
 
