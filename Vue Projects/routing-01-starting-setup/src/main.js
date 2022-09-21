@@ -21,14 +21,20 @@ const router = createRouter({
             name: 'teams', path: '/teams', components: { default: TeamsList, footer: TeamsFooter }, alias: "/",
             children: [
                 {
-                    name: 'team-members', path: ":teamId", components: TeamMembers, props: true
+                    name: 'team-members', path: ":teamId", component: TeamMembers, props: true
                 }
             ]
         },
         { path: '/users', components: { default: UsersList, footer: UsersFooter } },
         { path: "/:notFOund(.*)", component: NotFound }
     ],
-    linkActiveClass: 'vue-route-active'
+    linkActiveClass: 'vue-route-active',
+    scrollBehavior(to, from, savedPosition) {
+        console.log(to)
+        console.log(from)
+        console.log(savedPosition)
+        return { left: 0, top: 350 }
+    }
 })
 
 const app = createApp(App)
