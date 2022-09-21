@@ -9,3 +9,10 @@
 - Programatic Navigation
 - Route Params
 - Updating Params Data with Watchers
+- Passing Params as Props
+- Redirecting and "Catch All" Routes
+  - redirect
+  - alias
+  - notFoundRoute
+- Nested Routes and Location Objects
+- Query Params
