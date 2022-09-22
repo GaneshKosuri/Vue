@@ -3,6 +3,11 @@
     <h2>{{ user.name }}</h2>
     <h2>{{ user.age }}</h2>
     <button @click="updateUserAge">Change Age</button>
+    <div>
+      <input type="text" placeholder="Enter First name" @input="setFirstName" />
+      <input type="text" placeholder="Enter Last name" @input="setLastName" />
+    </div>
+    <h2>{{ fullName }}</h2>
   </section>
   <section class="container">
     <h2>{{ cricketer.name }}</h2>
@@ -11,7 +16,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 
 // const username = ref('Ganesh Kosuri');
 // const age = ref(20);
@@ -26,7 +31,20 @@ const user = ref({
   age: 25,
 });
 
-console.log('user', user);
+const firstName = ref('');
+const lastName = ref('');
+
+const setFirstName = (event) => {
+  firstName.value = event.target.value;
+};
+
+const setLastName = (event) => {
+  lastName.value = event.target.value;
+};
+
+const fullName = computed(() => firstName.value + ' ' + lastName.value);
+
+// console.log('user', user);
 
 const cricketer = reactive({
   name: 'Dhoni',
