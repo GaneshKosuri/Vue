@@ -3,7 +3,7 @@
     <!-- <h2>{{ user.name }}</h2>
     <h2>{{ user.age }}</h2> -->
     <!-- <user-data :name="user.name" :age="user.age"></user-data> -->
-    <UserData :name="user.name" :age="user.age" />
+    <UserData :name="user.name" @update="update" />
     <button @click="updateUserAge">Change Age</button>
     <div>
       <input type="text" placeholder="Enter First name" v-model="firstName" />
@@ -19,7 +19,19 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch } from 'vue';
+import {
+  ref,
+  reactive,
+  computed,
+  watch,
+  provide,
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated,
+  onBeforeUnmount,
+  onUnmounted,
+} from 'vue';
 import UserData from './components/UserData.vue';
 
 // const username = ref('Ganesh Kosuri');
@@ -71,6 +83,8 @@ const cricketer = reactive({
 
 console.log('cricketer', cricketer);
 
+provide('user', user);
+
 setTimeout(() => {
   user.value.name = 'Aravind';
   user.value.age = 30;
@@ -81,6 +95,24 @@ setTimeout(() => {
 const updateUserAge = () => {
   user.value.age++;
 };
+
+const update = (value) => {
+  user.value.age += value;
+};
+
+onBeforeMount(() => {
+  console.log('on before mount');
+});
+
+onMounted(() => console.log(' on mounted'));
+
+onBeforeUpdate(() => console.log('on before update'));
+
+onUpdated(() => console.log('on updated'));
+
+onBeforeUnmount(() => console.log('on before un mount'));
+
+onUnmounted(() => console.log('on un mounted'));
 </script>
 
 <style>
