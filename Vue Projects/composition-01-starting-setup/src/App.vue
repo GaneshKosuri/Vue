@@ -1,16 +1,44 @@
 <template>
   <section class="container">
-    <h2>{{ username }}</h2>
+    <h2>{{ user.name }}</h2>
+    <h2>{{ user.age }}</h2>
+  </section>
+  <section class="container">
+    <h2>{{ cricketer.name }}</h2>
+    <h2>{{ cricketer.jersey }}</h2>
   </section>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 
-const username = ref('Ganesh Kosuri');
+// const username = ref('Ganesh Kosuri');
+// const age = ref(20);
+
+// setTimeout(() => {
+//   username.value = 'Aravind';
+//   age.value = 25;
+// }, 2000);
+
+const user = ref({
+  name: 'Ganesh Kosuri',
+  age: 25,
+});
+
+console.log('user', user);
+
+const cricketer = reactive({
+  name: 'Dhoni',
+  jersey: 7,
+});
+
+console.log('cricketer', cricketer);
 
 setTimeout(() => {
-  username.value = 'Aravind';
+  user.value.name = 'Aravind';
+  user.value.age = 30;
+  cricketer.name = 'Virat Kohli';
+  cricketer.jersey = 18;
 }, 2000);
 </script>
 
