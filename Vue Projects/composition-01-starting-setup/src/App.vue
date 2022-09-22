@@ -2,6 +2,7 @@
   <section class="container">
     <h2>{{ user.name }}</h2>
     <h2>{{ user.age }}</h2>
+    <button @click="updateUserAge">Change Age</button>
   </section>
   <section class="container">
     <h2>{{ cricketer.name }}</h2>
@@ -40,6 +41,10 @@ setTimeout(() => {
   cricketer.name = 'Virat Kohli';
   cricketer.jersey = 18;
 }, 2000);
+
+const updateUserAge = () => {
+  user.value.age++;
+};
 </script>
 
 <style>
