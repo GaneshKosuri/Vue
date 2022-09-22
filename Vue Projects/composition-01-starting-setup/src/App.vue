@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, computed, watch } from 'vue';
 
 // const username = ref('Ganesh Kosuri');
 // const age = ref(20);
@@ -43,6 +43,15 @@ const lastName = ref('');
 // };
 
 const fullName = computed(() => firstName.value + ' ' + lastName.value);
+
+watch(fullName, (newValue, oldValue) => {
+  console.log(newValue, oldValue);
+});
+
+watch([firstName, lastName], (newValues, oldValues) => {
+  console.log('new', newValues);
+  console.log('old', oldValues);
+});
 
 // console.log('user', user);
 
