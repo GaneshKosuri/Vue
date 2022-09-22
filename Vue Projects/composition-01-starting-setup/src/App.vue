@@ -4,8 +4,8 @@
     <h2>{{ user.age }}</h2>
     <button @click="updateUserAge">Change Age</button>
     <div>
-      <input type="text" placeholder="Enter First name" @input="setFirstName" />
-      <input type="text" placeholder="Enter Last name" @input="setLastName" />
+      <input type="text" placeholder="Enter First name" v-model="firstName" />
+      <input type="text" placeholder="Enter Last name" v-model="lastName" />
     </div>
     <h2>{{ fullName }}</h2>
   </section>
@@ -34,13 +34,13 @@ const user = ref({
 const firstName = ref('');
 const lastName = ref('');
 
-const setFirstName = (event) => {
-  firstName.value = event.target.value;
-};
+// const setFirstName = (event) => {
+//   firstName.value = event.target.value;
+// };
 
-const setLastName = (event) => {
-  lastName.value = event.target.value;
-};
+// const setLastName = (event) => {
+//   lastName.value = event.target.value;
+// };
 
 const fullName = computed(() => firstName.value + ' ' + lastName.value);
 
