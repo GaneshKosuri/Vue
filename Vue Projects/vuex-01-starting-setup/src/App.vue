@@ -1,14 +1,15 @@
 <template>
   <base-container title="Vuex">
     <the-counter></the-counter>
-    <button @click="addOne">Add 1</button>
-    <button @click="addByValue(10)">Add 10</button>
+    <button @click="incrementCounter">Add 1</button>
+    <button @click="increment({ value: 10 })">Add 10</button>
   </base-container>
 </template>
 
 <script>
 import BaseContainer from './components/BaseContainer.vue';
 import TheCounter from './components/TheCounter.vue';
+import { mapActions, mapMutations } from 'vuex';
 
 export default {
   components: {
@@ -21,20 +22,23 @@ export default {
     },
   },
   methods: {
-    addOne() {
-      this.$store.commit('incrementCounter');
-    },
-    addByValue(value) {
-      // this.$store.commit('increaseByValue', { value });
-      // this.$store.commit({
-      //   type: 'increaseByValue',
-      //   value,
-      // });
-      this.$store.dispatch({
-        type: 'increment',
-        value,
-      });
-    },
+    // addOne() {
+    //   this.$store.commit('incrementCounter');
+    // },
+    // addByValue(value) {
+    //   // this.$store.commit('increaseByValue', { value });
+    //   // this.$store.commit({
+    //   //   type: 'increaseByValue',
+    //   //   value,
+    //   // });
+    //   this.$store.dispatch({
+    //     type: 'increment',
+    //     value,
+    //   });
+    // },
+
+    ...mapActions(['increment']),
+    ...mapMutations(['incrementCounter']),
   },
 };
 </script>

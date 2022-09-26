@@ -27,14 +27,13 @@ const store = createStore({
         }
     },
     actions: {
-        increment(context) {
-            console.log("context", context)
+        increment(context, payload) {
             setTimeout(function () {
                 context.commit({
                     type: 'increaseByValue',
-                    value: 50
+                    value: payload.value
                 })
-            }, 5000)
+            }, 2000)
         },
         increase(context, payload) {
             context.commit('increaseByValue', payload)
