@@ -40,8 +40,8 @@ export default {
     //     value,
     //   });
     // },
-    ...mapActions(['increment']),
-    ...mapMutations(['incrementCounter']),
+    ...mapActions('numbers', ['increment']),
+    ...mapMutations('numbers', ['incrementCounter']),
   },
 };
 </script>

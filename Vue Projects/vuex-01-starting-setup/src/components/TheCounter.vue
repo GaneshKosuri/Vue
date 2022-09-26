@@ -15,7 +15,7 @@ export default {
     // normalCounter() {
     //   return this.$store.getters.nomalizedCounter;
     // },
-    ...mapGetters(['finalCounter', 'nomalizedCounter']),
+    ...mapGetters('numbers', ['finalCounter', 'nomalizedCounter']),
   },
 };
 </script>
