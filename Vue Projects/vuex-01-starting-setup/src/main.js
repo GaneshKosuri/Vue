@@ -25,6 +25,20 @@ const store = createStore({
             else if (finalCounter > 100) return 100
             return finalCounter
         }
+    },
+    actions: {
+        increment(context) {
+            console.log("context", context)
+            setTimeout(function () {
+                context.commit({
+                    type: 'increaseByValue',
+                    value: 50
+                })
+            }, 5000)
+        },
+        increase(context, payload) {
+            context.commit('increaseByValue', payload)
+        }
     }
 })
 

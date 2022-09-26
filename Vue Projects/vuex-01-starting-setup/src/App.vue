@@ -26,8 +26,12 @@ export default {
     },
     addByValue(value) {
       // this.$store.commit('increaseByValue', { value });
-      this.$store.commit({
-        type: 'increaseByValue',
+      // this.$store.commit({
+      //   type: 'increaseByValue',
+      //   value,
+      // });
+      this.$store.dispatch({
+        type: 'increment',
         value,
       });
     },
